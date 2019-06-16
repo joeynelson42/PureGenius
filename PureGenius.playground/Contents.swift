@@ -1,7 +1,6 @@
 import PlaygroundSupport
 import SwiftUI
 
-
 struct PureGeniusView: View {
   var body: some View {
     ZStack {
@@ -65,7 +64,10 @@ struct MovingLetterView: View {
       .offset(by: self.position)
       .animation(.basic(duration: self.animationDuration, curve: .easeInOut))
       .onAppear {
-        let _ = self.timer
+        self.activeTimer = self.timer
+    }
+      .onDisappear {
+        self.activeTimer = nil
     }
   }
 }
